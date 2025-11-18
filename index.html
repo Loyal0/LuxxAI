@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LuxxAI – Voice Agents for Small Business</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO basics -->
+    <meta
+      name="description"
+      content="LuxxAI builds AI voice agents for small businesses – schedulers, customer support, and custom conversational agents."
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Background animated blobs -->
+    <div class="background-blob blob-1"></div>
+    <div class="background-blob blob-2"></div>
+
+    <header class="site-header">
+      <div class="logo">
+        <span class="logo-mark">✦</span>
+        <span class="logo-text">LuxxAI</span>
+      </div>
+      <!-- If you ever want nav links later, add them here -->
+    </header>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <div class="hero-content fade-in">
+          <h1>
+            Voice agents that <span class="gradient-text">run your front desk</span>.
+          </h1>
+          <p class="hero-subtitle">
+            LuxxAI builds always-on AI voice agents for small businesses —
+            handling scheduling, customer support, and lead qualification so you
+            can focus on what matters.
+          </p>
+
+          <div class="hero-cta">
+            <p class="cta-label">Talk to our AI demo:</p>
+
+            <!-- Your Vapi widget -->
+            <vapi-widget
+              assistant-id="d483aee6-54c9-4eaa-b489-b947401853cf"
+              public-key="94c63e18-d70d-49c4-86ee-e35f081d28ac"
+              class="vapi-main-widget"
+            ></vapi-widget>
+
+            <!-- Helper text under the button -->
+            <p class="cta-helper">
+              Tap the button and ask what LuxxAI does or how we help your
+              business.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- AGENT EXAMPLES SECTION -->
+      <section class="section agents-section">
+        <div class="section-header fade-in">
+          <h2>What can LuxxAI voice agents do?</h2>
+          <p>
+            We design custom voice agents that plug into your tools and speak in
+            your brand’s tone — no call center required.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card fade-in">
+            <div class="card-icon">📅</div>
+            <h3>Appointment Scheduler</h3>
+            <p>
+              Let callers book, reschedule, or cancel appointments 24/7. We can
+              connect to systems like Google Calendar or your scheduling app.
+            </p>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card-icon">💬</div>
+            <h3>Customer Support Triage</h3>
+            <p>
+              Answer FAQs, route urgent calls, and collect detailed info before
+              a human ever picks up the phone.
+            </p>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card-icon">🎯</div>
+            <h3>Lead Qualifier</h3>
+            <p>
+              Qualify inbound leads with a natural conversation and push
+              summaries into your CRM or email.
+            </p>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card-icon">⚙️</div>
+            <h3>Custom Agents</h3>
+            <p>
+              Have a unique workflow? We’ll design and deploy a voice agent
+              tailored to your exact business process.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SIMPLE “HOW IT WORKS” SECTION -->
+      <section class="section how-it-works">
+        <div class="section-header fade-in">
+          <h2>How it works</h2>
+          <p>
+            We handle the tech. You get a voice agent that feels like a trained team member.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step fade-in">
+            <span class="step-number">1</span>
+            <h3>Quick discovery call</h3>
+            <p>
+              We learn your business, typical calls, and the tools you already use.
+            </p>
+          </div>
+          <div class="step fade-in">
+            <span class="step-number">2</span>
+            <h3>Agent design & training</h3>
+            <p>
+              We design scripts, flows, and integrations so the agent can actually do work.
+            </p>
+          </div>
+          <div class="step fade-in">
+            <span class="step-number">3</span>
+            <h3>Launch & iterate</h3>
+            <p>
+              We deploy your agent, monitor calls, and refine responses based on real data.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> LuxxAI. All rights reserved.</p>
+    </footer>
+
+    <!-- Vapi widget script -->
+    <script
+      src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
+      async
+      type="text/javascript"
+    ></script>
+
+    <!-- Your scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
