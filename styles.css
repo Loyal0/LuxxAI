@@ -394,11 +394,7 @@ main {
   }
 
   .vapi-main-widget {
-    transform-origin: center;
-    transform: scale(1);
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero-content {
