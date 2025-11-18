@@ -186,10 +186,60 @@ main {
 
 /* The <vapi-widget> element itself */
 .vapi-main-widget {
-  display: inline-block;
-  transform: scale(1.1);
-  transform-origin: left center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Circular voice button that contains the Vapi widget */
+.voice-button-container {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  background: radial-gradient(circle at top left, var(--accent-1), var(--accent-2));
+  box-shadow: 0 0 18px rgba(6, 182, 212, 0.45);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Slight hover effect */
+.voice-button-container:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 0 24px rgba(6, 182, 212, 0.75);
+}
+
+/* Make sure the widget fills the circle nicely */
+.voice-button-container vapi-widget {
+  width: 120%;
+  height: 120%;
+}
+
+/* Speaking animation: subtle breathing / pulsing glow */
+.voice-button-container.speaking {
+  animation: voice-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes voice-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.45);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 28px rgba(6, 182, 212, 0.9);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.45);
+  }
+}
+
 
 /* Helper text under button */
 .cta-helper {
