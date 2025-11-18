@@ -1,0 +1,357 @@
+/* ------------- Base styles ------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #050712;
+  --bg-alt: #0b0f1f;
+  --text-main: #f5f7ff;
+  --text-muted: #a0a7c4;
+  --accent-1: #4f46e5;
+  --accent-2: #06b6d4;
+  --card-bg: rgba(10, 12, 28, 0.9);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --radius-xl: 1.5rem;
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  color: var(--text-main);
+  background: radial-gradient(circle at top, #141b3a 0, var(--bg) 55%);
+}
+
+/* ------------- Background motion blobs ------------- */
+.background-blob {
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(40px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: -1;
+  mix-blend-mode: screen;
+}
+
+.blob-1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, var(--accent-1), transparent 60%);
+  top: -80px;
+  left: -120px;
+  animation: float1 18s infinite alternate ease-in-out;
+}
+
+.blob-2 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--accent-2), transparent 60%);
+  bottom: -120px;
+  right: -100px;
+  animation: float2 22s infinite alternate ease-in-out;
+}
+
+@keyframes float1 {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(60px, 80px);
+  }
+}
+
+@keyframes float2 {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-80px, -40px);
+  }
+}
+
+/* ------------- Layout ------------- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+/* ------------- Header ------------- */
+.site-header {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(
+      135deg,
+      rgba(79, 70, 229, 0.25),
+      rgba(6, 182, 212, 0.25)
+    ),
+    rgba(10, 12, 28, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.logo-mark {
+  font-size: 1rem;
+}
+
+.logo-text {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+/* ------------- Hero ------------- */
+.hero {
+  padding: 3rem 0 2rem;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-subtitle {
+  margin: 0;
+  margin-bottom: 2.25rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 34rem;
+}
+
+/* ------------- Hero CTA / Vapi widget styling ------------- */
+.hero-cta {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: var(--radius-xl);
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.35), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.35), transparent 55%),
+    rgba(5, 8, 24, 0.96);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+.cta-label {
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+/* The <vapi-widget> element itself */
+.vapi-main-widget {
+  display: inline-block;
+  transform: scale(1.1);
+  transform-origin: left center;
+}
+
+/* Helper text under button */
+.cta-helper {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ------------- Sections ------------- */
+.section {
+  padding: 2.5rem 0 0;
+}
+
+.section-header {
+  max-width: 640px;
+}
+
+.section-header h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.5rem;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ------------- Cards (agent examples) ------------- */
+.cards-grid {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  position: relative;
+  padding: 1.25rem 1.15rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(15, 18, 40, 0.96), rgba(6, 10, 28, 0.96));
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+  border-color: rgba(79, 70, 229, 0.7);
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.22), transparent 65%),
+    linear-gradient(145deg, rgba(15, 18, 40, 0.96), rgba(6, 10, 28, 0.96));
+}
+
+.card-icon {
+  width: 2.3rem;
+  height: 2.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.35), rgba(6, 182, 212, 0.2));
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+}
+
+.card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ------------- Steps (“How it works”) ------------- */
+.steps-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.3rem;
+}
+
+.step {
+  position: relative;
+  padding: 1.3rem 1.2rem 1.2rem;
+  border-radius: 1.25rem;
+  background: rgba(5, 7, 18, 0.94);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+  margin-bottom: 0.7rem;
+}
+
+.step h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.02rem;
+}
+
+.step p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ------------- Footer ------------- */
+.site-footer {
+  padding: 1.5rem 1.25rem 1.75rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  background: radial-gradient(circle at top, rgba(79, 70, 229, 0.08), transparent 60%);
+}
+
+/* ------------- Fade-in on scroll ------------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------- Responsive tweaks ------------- */
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 2.25rem;
+  }
+
+  .hero-cta {
+    width: 100%;
+  }
+
+  .vapi-main-widget {
+    transform-origin: center;
+    transform: scale(1);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+}
