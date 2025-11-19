@@ -27,14 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   fadeEls.forEach((el) => observer.observe(el));
 
   // --- Voice button "speaking" animation ---
-  // Make sure your HTML has: <div id="voiceButton" class="voice-button-container ...">
   const voiceButton = document.getElementById("voiceButton");
   if (voiceButton) {
     voiceButton.addEventListener("click", () => {
-      // Add the speaking class to trigger CSS animation
+      // Add pulse effect
       voiceButton.classList.add("speaking");
 
-      // Remove it after ~4.5s (approx speaking duration)
+      // Remove after ~4.5 seconds
       setTimeout(() => {
         voiceButton.classList.remove("speaking");
       }, 4500);
