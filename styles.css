@@ -135,11 +135,19 @@ main {
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 720px;
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
   line-height: 1.05;
   margin: 0 0 1rem;
 }
@@ -153,20 +161,22 @@ main {
 
 .hero-subtitle {
   margin: 0;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1rem;
   color: var(--text-muted);
   font-size: 1rem;
   line-height: 1.7;
-  max-width: 34rem;
+  max-width: 36rem;
 }
 
-/* ------------- Hero CTA / Vapi widget styling ------------- */
-.hero-cta {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem;
+.hero-note {
+  margin: 0 0 2rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ------------- Chat demo panel ------------- */
+.demo-panel {
+  margin-top: 1rem;
   border-radius: var(--radius-xl);
   background: radial-gradient(
       circle at top left,
@@ -182,71 +192,165 @@ main {
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-soft);
   backdrop-filter: blur(18px);
+  padding: 1rem 1rem 1.1rem;
 }
 
-.cta-label {
+.demo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.demo-label {
   margin: 0;
   font-size: 0.85rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
   color: var(--text-muted);
 }
 
-/* The <vapi-widget> element itself (inside our CTA) */
-.vapi-main-widget {
+.demo-subtext {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.demo-body {
+  border-radius: 1.1rem;
+  overflow: hidden;
+  background: #050712;
+  min-height: 280px;
+}
+
+/* ------------- Demo options (voice & phone cards) ------------- */
+.demo-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.8rem;
+}
+
+.demo-card {
+  border-radius: 1.3rem;
+  background: rgba(6, 9, 24, 0.96);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6);
+  padding: 1.3rem 1.25rem 1.2rem;
+}
+
+.demo-pill {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-}
-
-/* Voice button wrapper (the widget itself has id="voiceButton") */
-#voiceButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 72px;
-  height: 72px;
-  margin-top: 0.75rem;
-  align-self: center; /* centers horizontally inside hero-cta (column flex) */
-
+  padding: 0.25rem 0.7rem;
   border-radius: 999px;
-  position: relative;
-  box-shadow: 0 0 18px rgba(6, 182, 212, 0.45);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: rgba(22, 163, 255, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #7dd3fc;
+  margin-bottom: 0.75rem;
 }
 
-/* Ensure the Vapi internals fill the circle nicely */
-#voiceButton vapi-widget {
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
+.demo-pill-secondary {
+  background: rgba(79, 70, 229, 0.14);
+  border-color: rgba(129, 140, 248, 0.55);
+  color: #a5b4fc;
 }
 
-/* Speaking animation on the whole button: grows but stays centered */
-#voiceButton.speaking {
-  animation: voice-pulse 1.2s ease-in-out infinite;
+.demo-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
 }
 
-@keyframes voice-pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 18px rgba(6, 182, 212, 0.35);
-  }
-  50% {
-    transform: scale(1.12);
-    box-shadow: 0 0 35px rgba(6, 182, 212, 0.85);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 18px rgba(6, 182, 212, 0.35);
-  }
-}
-
-/* Helper text under button */
-.cta-helper {
-  margin: 0;
-  font-size: 0.85rem;
+.demo-card p {
+  margin: 0 0 0.55rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.demo-highlight {
+  color: #e5e7ff;
+}
+
+.demo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.demo-list li {
+  margin-bottom: 0.25rem;
+}
+
+/* ------------- Phone call form ------------- */
+.call-form {
+  margin-top: 0.6rem;
+}
+
+.call-form label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  color: var(--text-muted);
+}
+
+.call-input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+
+.call-input-row input[type="tel"] {
+  flex: 1;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.call-input-row input::placeholder {
+  color: rgba(148, 163, 184, 0.8);
+}
+
+.call-input-row button {
+  padding: 0.55rem 0.95rem;
+  border-radius: 0.75rem;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(120deg, var(--accent-1), var(--accent-2));
+  color: white;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.55);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.call-input-row button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.75);
+}
+
+.call-input-row button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.65);
+}
+
+.call-hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.call-status {
+  margin: 0.3rem 0 0;
+  font-size: 0.82rem;
 }
 
 /* ------------- Sections ------------- */
@@ -405,6 +509,21 @@ main {
 }
 
 /* ------------- Responsive tweaks ------------- */
+@media (max-width: 800px) {
+  .hero {
+    padding-top: 2.25rem;
+  }
+
+  .hero-subtitle,
+  .hero-note {
+    max-width: 100%;
+  }
+
+  .demo-panel {
+    margin-top: 1.5rem;
+  }
+}
+
 @media (max-width: 640px) {
   .hero {
     padding-top: 2.25rem;
@@ -416,5 +535,13 @@ main {
 
   .hero-content {
     text-align: left;
+  }
+
+  .call-input-row {
+    flex-direction: column;
+  }
+
+  .call-input-row button {
+    width: 100%;
   }
 }
