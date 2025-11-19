@@ -1,7 +1,7 @@
 // script.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Set current year in footer ---
+  // --- Footer year ---
   const yearSpan = document.getElementById("year");
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
@@ -35,21 +35,113 @@ document.addEventListener("DOMContentLoaded", () => {
     callForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const phone = phoneInput.value.trim();
-
       if (!phone) return;
 
-      // You CANNOT safely call Vapi's secret-key API directly from the browser.
-      // In production, this should send `phone` to your backend (e.g. /api/start-call)
-      // which then uses Vapi's server-side API + secret key to trigger the call.
-
-      // For now, just simulate a response so the UI feels alive.
+      // In production: send `phone` to your backend, then use Vapi's server API.
       callStatus.style.color = "#a5b4fc";
-      callStatus.textContent = "Simulating call… in production this will dial your number.";
+      callStatus.textContent =
+        "Simulating call… in production this will dial your number with a LuxxAI phone agent.";
 
       setTimeout(() => {
         callStatus.style.color = "#4ade80";
-        callStatus.textContent = "Call simulation complete. Hook this form up to your LuxxAI backend when ready.";
+        callStatus.textContent =
+          "Call simulation complete. Hook this form up to your LuxxAI backend when you're ready.";
       }, 2500);
     });
   }
+
+  // --- Widget playground logic ---
+  const controlsForm = document.getElementById("widget-controls");
+  if (!controlsForm) return;
+
+  let widgetEl = null;
+
+  function ensureWidget() {
+    if (!widgetEl) {
+      widgetEl = document.createElement("vapi-widget");
+      widgetEl.dataset.playground = "true";
+
+      // Required props
+      widgetEl.setAttribute(
+        "public-key",
+        "94c63e18-d70d-49c4-86ee-e35f081d28ac"
+      );
+      widgetEl.setAttribute(
+        "assistant-id",
+        "d483aee6-54c9-4eaa-b489-b947401853cf"
+      );
+
+      document.body.appendChild(widgetEl);
+    }
+    return widgetEl;
+  }
+
+  function updateWidgetFromControls() {
+    const mode = controlsForm.querySelector("#wp-mode").value;
+    const theme = controlsForm.querySelector("#wp-theme").value;
+    const size = controlsForm.querySelector("#wp-size").value;
+    const position = controlsForm.querySelector("#wp-position").value;
+    const baseColor = controlsForm.querySelector("#wp-base-color").value;
+    const accentColor = controlsForm.querySelector("#wp-accent-color").value;
+    const showTranscript = controlsForm.querySelector("#wp-show-transcript")
+      .checked;
+    const requireConsent = controlsForm.querySelector("#wp-require-consent")
+      .checked;
+
+    const w = ensureWidget();
+
+    // Appearance options
+    w.setAttribute("mode", mode); // voice | chat
+    w.setAttribute("theme", theme); // light | dark
+    w.setAttribute("size", size); // tiny | compact | full
+    w.setAttribute("position", position); // bottom-right | ...
+    w.setAttribute("radius", "large");
+
+    // Styling options
+    w.setAttribute("base-color", baseColor);
+    w.setAttribute("accent-color", accentColor);
+    w.setAttribute("button-base-color", baseColor);
+    w.setAttribute("button-accent-color", "#ffffff");
+
+    // Text customization
+    if (mode === "voice") {
+      w.setAttribute("main-label", "Talk to LuxxAI");
+      w.setAttribute("start-button-text", "Start demo");
+      w.setAttribute("end-button-text", "End");
+      w.setAttribute(
+        "empty-voice-message",
+        "Ask how LuxxAI voice agents can help your business."
+      );
+      // If you don't want chat text in voice mode, remove chat message attr
+      w.removeAttribute("empty-chat-message");
+    } else {
+      w.setAttribute("main-label", "Chat with LuxxAI");
+      w.setAttribute(
+        "empty-chat-message",
+        "Tell me about your business and I'll show you how LuxxAI voice & chat agents can help."
+      );
+      w.removeAttribute("empty-voice-message");
+    }
+
+    // Advanced options
+    w.setAttribute("show-transcript", showTranscript ? "true" : "false");
+
+    if (requireConsent) {
+      w.setAttribute("require-consent", "true");
+      w.setAttribute(
+        "terms-content",
+        "By continuing, you agree to let LuxxAI process your conversation to improve this demo and design agents for your business."
+      );
+      // local-storage-key left as default unless you want to customize it
+    } else {
+      w.setAttribute("require-consent", "false");
+      w.removeAttribute("terms-content");
+    }
+  }
+
+  // Update whenever a control changes
+  controlsForm.addEventListener("change", updateWidgetFromControls);
+
+  // Initial widget setup (defaults from the form)
+  updateWidgetFromControls();
 });
