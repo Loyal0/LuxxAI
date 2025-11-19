@@ -44,68 +44,166 @@
           </p>
 
           <p class="hero-note">
-            Try all three: type to our AI, test a free website voice widget, or
-            experience an AI phone agent.
+            Use the playground below to try a free website widget (voice or
+            chat) and see how it would look on your own site.
+          </p>
+        </div>
+      </section>
+
+      <!-- WIDGET PLAYGROUND SECTION -->
+      <section class="section widget-playground">
+        <div class="section-header fade-in">
+          <h2>Widget playground</h2>
+          <p>
+            Adjust the settings to preview a LuxxAI widget — switch between
+            voice and chat, change colors, and move it to different corners of
+            the screen.
           </p>
         </div>
 
-        <!-- CENTER CHAT DEMO -->
-        <section class="demo-panel fade-in">
-          <div class="demo-header">
-            <div>
-              <p class="demo-label">Live website chat demo</p>
-              <p class="demo-subtext">
-                Ask how LuxxAI could help your business or describe your use
-                case.
-              </p>
+        <div class="playground-inner fade-in">
+          <!-- Controls -->
+          <form id="widget-controls" class="playground-controls">
+            <div class="control-row">
+              <div class="control-group">
+                <label for="wp-mode">Mode</label>
+                <select id="wp-mode" name="mode">
+                  <option value="voice" selected>Voice (talk to the agent)</option>
+                  <option value="chat">Chat (type to the agent)</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="wp-theme">Theme</label>
+                <select id="wp-theme" name="theme">
+                  <option value="dark" selected>Dark</option>
+                  <option value="light">Light</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="demo-body">
-            <!-- Embedded Vapi chat widget -->
-            <vapi-widget
-              public-key="94c63e18-d70d-49c4-86ee-e35f081d28ac"
-              assistant-id="d483aee6-54c9-4eaa-b489-b947401853cf"
-              mode="chat"
-              theme="dark"
-              size="full"
-              radius="large"
-              base-color="#050712"
-              accent-color="#06B6D4"
-              main-label="Chat with LuxxAI"
-              empty-chat-message="Tell me about your business and I'll show you how LuxxAI voice & chat agents can help."
-            ></vapi-widget>
-          </div>
-        </section>
+            <div class="control-row">
+              <div class="control-group">
+                <label for="wp-size">Size</label>
+                <select id="wp-size" name="size">
+                  <option value="tiny" selected>Tiny (floating button)</option>
+                  <option value="compact">Compact</option>
+                  <option value="full">Full</option>
+                </select>
+              </div>
 
-        <!-- TWO DEMO CARDS: VOICE WIDGET + PHONE AGENT -->
-        <section class="demo-options fade-in">
-          <!-- Free voice widget card -->
-          <article class="demo-card">
-            <div class="demo-pill">Free website voice widget</div>
-            <h2>Try our voice widget like your customers would.</h2>
+              <div class="control-group">
+                <label for="wp-position">Position</label>
+                <select id="wp-position" name="position">
+                  <option value="bottom-left" selected>Bottom left</option>
+                  <option value="bottom-right">Bottom right</option>
+                  <option value="top-left">Top left</option>
+                  <option value="top-right">Top right</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="control-row">
+              <div class="control-group">
+                <label for="wp-base-color">Base color</label>
+                <input
+                  id="wp-base-color"
+                  name="base-color"
+                  type="color"
+                  value="#050712"
+                />
+              </div>
+
+              <div class="control-group">
+                <label for="wp-accent-color">Accent color</label>
+                <input
+                  id="wp-accent-color"
+                  name="accent-color"
+                  type="color"
+                  value="#06B6D4"
+                />
+              </div>
+            </div>
+
+            <div class="control-row">
+              <div class="control-group checkbox-group">
+                <label class="checkbox-label">
+                  <input
+                    id="wp-show-transcript"
+                    type="checkbox"
+                    name="show-transcript"
+                    checked
+                  />
+                  <span>Show transcript (voice)</span>
+                </label>
+              </div>
+
+              <div class="control-group checkbox-group">
+                <label class="checkbox-label">
+                  <input
+                    id="wp-require-consent"
+                    type="checkbox"
+                    name="require-consent"
+                  />
+                  <span>Require consent before first use</span>
+                </label>
+              </div>
+            </div>
+
+            <p class="playground-hint">
+              Look for the floating widget in the selected corner. Change the
+              settings above and tap the button to try it.
+            </p>
+          </form>
+
+          <!-- Explanation / product positioning -->
+          <div class="playground-note">
+            <h3>What you’re testing</h3>
             <p>
-              There’s a free LuxxAI voice agent running on this page. Your
-              visitors would see the same thing on your site — a small floating
-              button they can tap to talk.
+              This is the same LuxxAI widget we embed on client websites. Use it
+              here to decide how you want it to look and behave on your site.
             </p>
-            <p class="demo-highlight">
-              Look for the glowing voice button in the
-              <strong>bottom-left corner</strong> to try it now.
-            </p>
-            <ul class="demo-list">
-              <li>24/7 front desk for your website</li>
-              <li>Handles FAQs, booking, and lead capture</li>
-              <li>Fully customized to your brand voice</li>
+            <ul>
+              <li>
+                <strong>Voice mode:</strong> visitors tap and speak to an AI
+                receptionist.
+              </li>
+              <li>
+                <strong>Chat mode:</strong> visitors type to an AI assistant.
+              </li>
+              <li>
+                <strong>Position & size:</strong> standard widget locations and
+                layouts used across modern sites.
+              </li>
+              <li>
+                <strong>Colors & consent:</strong> match your brand and choose
+                whether to show a consent message.
+              </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS SECTION: WIDGETS + PHONE AGENTS -->
+      <section class="section products-section">
+        <div class="cards-grid">
+          <article class="card fade-in">
+            <div class="demo-pill">Website voice & chat widgets</div>
+            <h3>Free widget on your site in days.</h3>
+            <p>
+              We set up a custom LuxxAI widget that matches your brand and
+              connects to your tools. Start with the configuration you like from
+              the playground above.
+            </p>
+            <p>
+              Use it to greet visitors, answer FAQs, book appointments, or
+              qualify leads — without adding headcount.
+            </p>
           </article>
 
-          <!-- Phone agent card -->
-          <article class="demo-card">
-            <div class="demo-pill demo-pill-secondary">
-              Phone voice agents
-            </div>
-            <h2>Experience an AI that answers your calls.</h2>
+          <article class="card fade-in">
+            <div class="demo-pill demo-pill-secondary">Phone voice agents</div>
+            <h3>AI that answers your business phone.</h3>
             <p>
               We set up phone numbers with AI agents that greet callers, answer
               questions, and route or qualify leads — no call center required.
@@ -124,13 +222,13 @@
                 <button type="submit">Call my phone</button>
               </div>
               <p class="call-hint">
-                We’ll connect you to a sample AI phone agent. In production this
-                uses your dedicated LuxxAI number.
+                On a real deployment this would dial your number with a LuxxAI
+                phone agent. Here it’s a safe simulation.
               </p>
               <p class="call-status" id="call-status"></p>
             </form>
           </article>
-        </section>
+        </div>
       </section>
 
       <!-- AGENT EXAMPLES SECTION -->
@@ -226,26 +324,7 @@
       <p>© <span id="year"></span> LuxxAI. All rights reserved.</p>
     </footer>
 
-    <!-- Floating voice widget (FREE website voice agent demo) -->
-    <vapi-widget
-      public-key="94c63e18-d70d-49c4-86ee-e35f081d28ac"
-      assistant-id="d483aee6-54c9-4eaa-b489-b947401853cf"
-      mode="voice"
-      theme="dark"
-      size="tiny"
-      position="bottom-left"
-      radius="large"
-      base-color="#050712"
-      accent-color="#06B6D4"
-      button-base-color="#050712"
-      button-accent-color="#FFFFFF"
-      main-label="Talk to our free voice agent"
-      start-button-text="Start demo"
-      end-button-text="End"
-      show-transcript="false"
-    ></vapi-widget>
-
-    <!-- Vapi widget script -->
+    <!-- Vapi widget script (needed for the <vapi-widget> web component) -->
     <script
       src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
       async
