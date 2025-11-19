@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>LuxxAI – Voice Agents for Small Business</title>
+    <title>LuxxAI – Voice & Chat Agents for Small Business</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO basics -->
     <meta
       name="description"
-      content="LuxxAI builds AI voice agents for small businesses – schedulers, customer support, and custom conversational agents."
+      content="LuxxAI builds AI voice and chat agents for small businesses – website widgets and phone voice agents that handle scheduling, customer support, and lead qualification."
     />
 
     <!-- Styles -->
@@ -24,60 +24,122 @@
         <span class="logo-mark">✦</span>
         <span class="logo-text">LuxxAI</span>
       </div>
-      <!-- If you ever want nav links later, add them here -->
     </header>
 
     <main>
       <!-- HERO SECTION -->
       <section class="hero">
         <div class="hero-content fade-in">
+          <p class="eyebrow">Website widgets · Phone voice agents</p>
+
           <h1>
-            Voice agents that <span class="gradient-text">run your front desk</span>.
+            AI voice & chat agents that
+            <span class="gradient-text">run your front desk</span>.
           </h1>
+
           <p class="hero-subtitle">
-            LuxxAI builds always-on AI voice agents for small businesses —
-            handling scheduling, customer support, and lead qualification so you
-            can focus on what matters.
+            LuxxAI builds always-on AI voice and chat agents for small
+            businesses — handling scheduling, customer support, and lead
+            qualification so you can focus on what matters.
           </p>
 
-          <div class="hero-cta">
-            <p class="cta-label">Talk to our AI demo:</p>
-
-            <!-- Your Vapi widget -->
-              <vapi-widget
-                id="voiceButton"
-                assistant-id="d483aee6-54c9-4eaa-b489-b947401853cf"
-                public-key="94c63e18-d70d-49c4-86ee-e35f081d28ac"
-                mode="voice"
-                size="tiny"
-                theme="dark"
-                radius="large"
-                base-color="#050712"
-                accent-color="#06B6D4"
-                button-base-color="#050712"
-                button-accent-color="#FFFFFF"
-                main-label="Talk to our AI demo"
-                start-button-text="Start demo"
-                end-button-text="End"
-                show-transcript="false"
-              ></vapi-widget>
-
-            <!-- Helper text under the button -->
-            <p class="cta-helper">
-              Tap the button and ask what LuxxAI does or how we help your
-              business.
-            </p>
-          </div>
+          <p class="hero-note">
+            Try all three: type to our AI, test a free website voice widget, or
+            experience an AI phone agent.
+          </p>
         </div>
+
+        <!-- CENTER CHAT DEMO -->
+        <section class="demo-panel fade-in">
+          <div class="demo-header">
+            <div>
+              <p class="demo-label">Live website chat demo</p>
+              <p class="demo-subtext">
+                Ask how LuxxAI could help your business or describe your use
+                case.
+              </p>
+            </div>
+          </div>
+
+          <div class="demo-body">
+            <!-- Embedded Vapi chat widget -->
+            <vapi-widget
+              public-key="94c63e18-d70d-49c4-86ee-e35f081d28ac"
+              assistant-id="d483aee6-54c9-4eaa-b489-b947401853cf"
+              mode="chat"
+              theme="dark"
+              size="full"
+              radius="large"
+              base-color="#050712"
+              accent-color="#06B6D4"
+              main-label="Chat with LuxxAI"
+              empty-chat-message="Tell me about your business and I'll show you how LuxxAI voice & chat agents can help."
+            ></vapi-widget>
+          </div>
+        </section>
+
+        <!-- TWO DEMO CARDS: VOICE WIDGET + PHONE AGENT -->
+        <section class="demo-options fade-in">
+          <!-- Free voice widget card -->
+          <article class="demo-card">
+            <div class="demo-pill">Free website voice widget</div>
+            <h2>Try our voice widget like your customers would.</h2>
+            <p>
+              There’s a free LuxxAI voice agent running on this page. Your
+              visitors would see the same thing on your site — a small floating
+              button they can tap to talk.
+            </p>
+            <p class="demo-highlight">
+              Look for the glowing voice button in the
+              <strong>bottom-left corner</strong> to try it now.
+            </p>
+            <ul class="demo-list">
+              <li>24/7 front desk for your website</li>
+              <li>Handles FAQs, booking, and lead capture</li>
+              <li>Fully customized to your brand voice</li>
+            </ul>
+          </article>
+
+          <!-- Phone agent card -->
+          <article class="demo-card">
+            <div class="demo-pill demo-pill-secondary">
+              Phone voice agents
+            </div>
+            <h2>Experience an AI that answers your calls.</h2>
+            <p>
+              We set up phone numbers with AI agents that greet callers, answer
+              questions, and route or qualify leads — no call center required.
+            </p>
+
+            <form id="call-demo-form" class="call-form">
+              <label for="phone-input">Get a sample call:</label>
+              <div class="call-input-row">
+                <input
+                  type="tel"
+                  id="phone-input"
+                  name="phone"
+                  placeholder="(555) 123-4567"
+                  required
+                />
+                <button type="submit">Call my phone</button>
+              </div>
+              <p class="call-hint">
+                We’ll connect you to a sample AI phone agent. In production this
+                uses your dedicated LuxxAI number.
+              </p>
+              <p class="call-status" id="call-status"></p>
+            </form>
+          </article>
+        </section>
       </section>
 
       <!-- AGENT EXAMPLES SECTION -->
       <section class="section agents-section">
         <div class="section-header fade-in">
-          <h2>What can LuxxAI voice agents do?</h2>
+          <h2>What can LuxxAI agents do?</h2>
           <p>
-            We design custom voice agents that plug into your tools and speak in
-            your brand’s tone — no call center required.
+            We design custom voice and chat agents that plug into your tools and
+            speak in your brand’s tone — no call center required.
           </p>
         </div>
 
@@ -86,8 +148,9 @@
             <div class="card-icon">📅</div>
             <h3>Appointment Scheduler</h3>
             <p>
-              Let callers book, reschedule, or cancel appointments 24/7. We can
-              connect to systems like Google Calendar or your scheduling app.
+              Let callers or site visitors book, reschedule, or cancel
+              appointments 24/7. Connect to Google Calendar or your scheduling
+              app.
             </p>
           </article>
 
@@ -111,10 +174,10 @@
 
           <article class="card fade-in">
             <div class="card-icon">⚙️</div>
-            <h3>Custom Agents</h3>
+            <h3>Custom Workflows</h3>
             <p>
-              Have a unique workflow? We’ll design and deploy a voice agent
-              tailored to your exact business process.
+              Have a unique workflow? We’ll design and deploy agents tailored to
+              your exact business process.
             </p>
           </article>
         </div>
@@ -125,7 +188,8 @@
         <div class="section-header fade-in">
           <h2>How it works</h2>
           <p>
-            We handle the tech. You get a voice agent that feels like a trained team member.
+            We handle the tech. You get AI agents that feel like trained team
+            members.
           </p>
         </div>
 
@@ -134,21 +198,24 @@
             <span class="step-number">1</span>
             <h3>Quick discovery call</h3>
             <p>
-              We learn your business, typical calls, and the tools you already use.
+              We learn your business, typical calls, and the tools you already
+              use.
             </p>
           </div>
           <div class="step fade-in">
             <span class="step-number">2</span>
             <h3>Agent design & training</h3>
             <p>
-              We design scripts, flows, and integrations so the agent can actually do work.
+              We design scripts, flows, and integrations so agents can actually
+              do work — not just talk.
             </p>
           </div>
           <div class="step fade-in">
             <span class="step-number">3</span>
             <h3>Launch & iterate</h3>
             <p>
-              We deploy your agent, monitor calls, and refine responses based on real data.
+              We deploy your agents, monitor conversations, and refine responses
+              based on real data.
             </p>
           </div>
         </div>
@@ -158,6 +225,25 @@
     <footer class="site-footer">
       <p>© <span id="year"></span> LuxxAI. All rights reserved.</p>
     </footer>
+
+    <!-- Floating voice widget (FREE website voice agent demo) -->
+    <vapi-widget
+      public-key="94c63e18-d70d-49c4-86ee-e35f081d28ac"
+      assistant-id="d483aee6-54c9-4eaa-b489-b947401853cf"
+      mode="voice"
+      theme="dark"
+      size="tiny"
+      position="bottom-left"
+      radius="large"
+      base-color="#050712"
+      accent-color="#06B6D4"
+      button-base-color="#050712"
+      button-accent-color="#FFFFFF"
+      main-label="Talk to our free voice agent"
+      start-button-text="Start demo"
+      end-button-text="End"
+      show-transcript="false"
+    ></vapi-widget>
 
     <!-- Vapi widget script -->
     <script
