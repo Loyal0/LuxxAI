@@ -131,15 +131,7 @@ main {
 
 /* ------------- Hero ------------- */
 .hero {
-  padding: 3rem 0 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.hero > .demo-panel {
-  align-self: flex-start;   /* keeps it left-aligned with text; 
-                               use center if you want it centered */
+  padding: 3rem 0 1.5rem;
 }
 
 .hero-content {
@@ -177,78 +169,186 @@ main {
 }
 
 .hero-note {
-  margin: 0 0 2rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-/* ------------- Chat demo panel ------------- */
-.demo-panel {
-  margin-top: 1.5rem;
-  max-width: 760px;        /* <— not full-page wide */
-  width: 100%;
-  border-radius: var(--radius-xl);
-  background: radial-gradient(
-      circle at top left,
-      rgba(79, 70, 229, 0.35),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      rgba(6, 182, 212, 0.35),
-      transparent 55%
-    ),
-    rgba(5, 8, 24, 0.96);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(18px);
-  padding: 1rem 1rem 1.1rem;
-}
-
-.demo-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 0.75rem;
-}
-
-.demo-label {
   margin: 0;
-  font-size: 0.85rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.demo-subtext {
-  margin: 0.15rem 0 0;
   font-size: 0.9rem;
   color: var(--text-muted);
 }
 
-.demo-body {
-  border-radius: 1.1rem;
-  overflow: hidden;
-  background: #050712;
-  /* Let the widget define the height instead of forcing 280px */
+/* ------------- Sections ------------- */
+.section {
+  padding: 2.75rem 0 0;
 }
 
-/* ------------- Demo options (voice & phone cards) ------------- */
-.demo-options {
+.section-header {
+  max-width: 640px;
+}
+
+.section-header h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.5rem;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ------------- Widget playground ------------- */
+.widget-playground {
+  padding-top: 2.75rem;
+}
+
+.playground-inner {
+  margin-top: 1.6rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 1.5rem;
-  margin-top: 1.8rem;
+  align-items: flex-start;
 }
 
-.demo-card {
+.playground-controls {
+  padding: 1.2rem 1.1rem 1.1rem;
   border-radius: 1.3rem;
   background: rgba(6, 9, 24, 0.96);
   border: 1px solid var(--border-subtle);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6);
-  padding: 1.3rem 1.25rem 1.2rem;
 }
 
+.control-row {
+  display: flex;
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.control-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.control-group label {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.control-group select,
+.control-group input[type="color"] {
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(15, 23, 42, 0.96);
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.control-group input[type="color"] {
+  padding: 0;
+  height: 2.25rem;
+  cursor: pointer;
+}
+
+/* checkbox styling */
+.checkbox-group {
+  justify-content: center;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.checkbox-label input[type="checkbox"] {
+  accent-color: var(--accent-2);
+}
+
+.playground-hint {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.playground-note {
+  padding: 1.2rem 1.15rem 1.1rem;
+  border-radius: 1.3rem;
+  background: rgba(5, 7, 18, 0.9);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.playground-note h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+.playground-note ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.playground-note li {
+  margin-bottom: 0.2rem;
+}
+
+/* ------------- Product cards / general cards grid ------------- */
+.cards-grid {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  position: relative;
+  padding: 1.25rem 1.15rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    145deg,
+    rgba(15, 18, 40, 0.96),
+    rgba(6, 10, 28, 0.96)
+  );
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease, background 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+  border-color: rgba(79, 70, 229, 0.7);
+  background: radial-gradient(
+      circle at top left,
+      rgba(79, 70, 229, 0.22),
+      transparent 65%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(15, 18, 40, 0.96),
+      rgba(6, 10, 28, 0.96)
+    );
+}
+
+.card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0 0 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Pills reused from earlier */
 .demo-pill {
   display: inline-flex;
   align-items: center;
@@ -267,34 +367,6 @@ main {
   background: rgba(79, 70, 229, 0.14);
   border-color: rgba(129, 140, 248, 0.55);
   color: #a5b4fc;
-}
-
-.demo-card h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.2rem;
-}
-
-.demo-card p {
-  margin: 0 0 0.55rem;
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.demo-highlight {
-  color: #e5e7ff;
-}
-
-.demo-list {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.demo-list li {
-  margin-bottom: 0.25rem;
 }
 
 /* ------------- Phone call form ------------- */
@@ -363,65 +435,7 @@ main {
   font-size: 0.82rem;
 }
 
-/* ------------- Sections ------------- */
-.section {
-  padding: 2.5rem 0 0;
-}
-
-.section-header {
-  max-width: 640px;
-}
-
-.section-header h2 {
-  margin: 0 0 0.4rem;
-  font-size: 1.5rem;
-}
-
-.section-header p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-/* ------------- Cards (agent examples) ------------- */
-.cards-grid {
-  margin-top: 1.6rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-}
-
-.card {
-  position: relative;
-  padding: 1.25rem 1.15rem;
-  border-radius: 1.25rem;
-  background: linear-gradient(
-    145deg,
-    rgba(15, 18, 40, 0.96),
-    rgba(6, 10, 28, 0.96)
-  );
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease, background 0.25s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-  border-color: rgba(79, 70, 229, 0.7);
-  background: radial-gradient(
-      circle at top left,
-      rgba(79, 70, 229, 0.22),
-      transparent 65%
-    ),
-    linear-gradient(
-      145deg,
-      rgba(15, 18, 40, 0.96),
-      rgba(6, 10, 28, 0.96)
-    );
-}
-
+/* ------------- Agent example icons ------------- */
 .card-icon {
   width: 2.3rem;
   height: 2.3rem;
@@ -436,18 +450,6 @@ main {
   );
   margin-bottom: 0.75rem;
   font-size: 1.15rem;
-}
-
-.card h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1.05rem;
-}
-
-.card p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
 }
 
 /* ------------- Steps (“How it works”) ------------- */
@@ -529,24 +531,12 @@ main {
     max-width: 100%;
   }
 
-  .demo-panel {
-    margin-top: 1.5rem;
+  .playground-inner {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
-  .hero {
-    padding-top: 2.25rem;
-  }
-
-  .hero-cta {
-    width: 100%;
-  }
-
-  .hero-content {
-    text-align: left;
-  }
-
   .call-input-row {
     flex-direction: column;
   }
