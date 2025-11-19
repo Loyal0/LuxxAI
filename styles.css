@@ -132,6 +132,14 @@ main {
 /* ------------- Hero ------------- */
 .hero {
   padding: 3rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero > .demo-panel {
+  align-self: flex-start;   /* keeps it left-aligned with text; 
+                               use center if you want it centered */
 }
 
 .hero-content {
@@ -176,7 +184,9 @@ main {
 
 /* ------------- Chat demo panel ------------- */
 .demo-panel {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  max-width: 760px;        /* <— not full-page wide */
+  width: 100%;
   border-radius: var(--radius-xl);
   background: radial-gradient(
       circle at top left,
@@ -220,7 +230,7 @@ main {
   border-radius: 1.1rem;
   overflow: hidden;
   background: #050712;
-  min-height: 280px;
+  /* Let the widget define the height instead of forcing 280px */
 }
 
 /* ------------- Demo options (voice & phone cards) ------------- */
