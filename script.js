@@ -26,17 +26,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fadeEls.forEach((el) => observer.observe(el));
 
-  // --- Voice button "speaking" animation ---
-  const voiceButton = document.getElementById("voiceButton");
-  if (voiceButton) {
-    voiceButton.addEventListener("click", () => {
-      // Add pulse effect
-      voiceButton.classList.add("speaking");
+  // --- Phone demo form (stub for now) ---
+  const callForm = document.getElementById("call-demo-form");
+  const phoneInput = document.getElementById("phone-input");
+  const callStatus = document.getElementById("call-status");
 
-      // Remove after ~4.5 seconds
+  if (callForm && phoneInput && callStatus) {
+    callForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const phone = phoneInput.value.trim();
+
+      if (!phone) return;
+
+      // You CANNOT safely call Vapi's secret-key API directly from the browser.
+      // In production, this should send `phone` to your backend (e.g. /api/start-call)
+      // which then uses Vapi's server-side API + secret key to trigger the call.
+
+      // For now, just simulate a response so the UI feels alive.
+      callStatus.style.color = "#a5b4fc";
+      callStatus.textContent = "Simulating call… in production this will dial your number.";
+
       setTimeout(() => {
-        voiceButton.classList.remove("speaking");
-      }, 4500);
+        callStatus.style.color = "#4ade80";
+        callStatus.textContent = "Call simulation complete. Hook this form up to your LuxxAI backend when ready.";
+      }, 2500);
     });
   }
 });
