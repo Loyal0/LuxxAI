@@ -40,121 +40,46 @@
           <p class="hero-subtitle">
             LuxxAI builds always-on AI voice and chat agents for small
             businesses — handling scheduling, customer support, and lead
-            qualification so you can focus on what matters.
+            qualification so you can focus on what matters. 
           </p>
 
           <p class="hero-note">
-            Use the playground below to try a free website widget (voice or
-            chat) and see how it would look on your own site.
+            Use the playground below to try out a website widget. Quickly
+            switch between voice and chat previews.
           </p>
         </div>
       </section>
 
       <!-- WIDGET PLAYGROUND SECTION -->
-      <div id="widget-mount"></div>
-
       <section class="section widget-playground">
         <div class="section-header fade-in">
           <h2>Widget playground</h2>
           <p>
-            Adjust the settings to preview a LuxxAI widget — switch between
-            voice and chat, change colors, and move it to different corners of
-            the screen.
+            Two widgets are ready in the bottom-right corner. Toggle between the
+            voice and chat experiences of our LuxxAI bot and ask about what we offer. 
           </p>
         </div>
 
-        <div class="playground-inner fade-in">
-          <!-- Controls -->
-          <form id="widget-controls" class="playground-controls">
-            <div class="control-row">
-              <div class="control-group">
-                <label for="wp-mode">Mode</label>
-                <select id="wp-mode" name="mode">
-                  <option value="voice" selected>Voice (talk to the agent)</option>
-                  <option value="chat">Chat (type to the agent)</option>
-                </select>
-              </div>
-
-              <div class="control-group">
-                <label for="wp-theme">Theme</label>
-                <select id="wp-theme" name="theme">
-                  <option value="dark" selected>Dark</option>
-                  <option value="light">Light</option>
-                </select>
-              </div>
+        <div class="playground-inner fade-in single-toggle">
+          <div class="toggle-card">
+            <div class="toggle-header">
+              <h3>Choose a preview</h3>
+              <p>
+                Both widgets use the same LuxxAI demo assistant. Swap between
+                voice and chat to see how visitors can interact.
+              </p>
             </div>
 
-            <div class="control-row">
-              <div class="control-group">
-                <label for="wp-size">Size</label>
-                <select id="wp-size" name="size">
-                  <option value="tiny" selected>Tiny (floating button)</option>
-                  <option value="compact">Compact</option>
-                  <option value="full">Full</option>
-                </select>
-              </div>
-
-              <div class="control-group">
-                <label for="wp-position">Position</label>
-                <select id="wp-position" name="position">
-                  <option value="bottom-left" selected>Bottom left</option>
-                  <option value="bottom-right">Bottom right</option>
-                  <option value="top-left">Top left</option>
-                  <option value="top-right">Top right</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="control-row">
-              <div class="control-group">
-                <label for="wp-base-color">Base color</label>
-                <input
-                  id="wp-base-color"
-                  name="base-color"
-                  type="color"
-                  value="#050712"
-                />
-              </div>
-
-              <div class="control-group">
-                <label for="wp-accent-color">Accent color</label>
-                <input
-                  id="wp-accent-color"
-                  name="accent-color"
-                  type="color"
-                  value="#06B6D4"
-                />
-              </div>
-            </div>
-
-            <div class="control-row">
-              <div class="control-group checkbox-group">
-                <label class="checkbox-label">
-                  <input
-                    id="wp-show-transcript"
-                    type="checkbox"
-                    name="show-transcript"
-                    checked
-                  />
-                  <span>Show transcript (voice)</span>
-                </label>
-              </div>
-
-              <div class="control-group checkbox-group">
-                <label class="checkbox-label">
-                  <input
-                    id="wp-require-consent"
-                    type="checkbox"
-                    name="require-consent"
-                  />
-                  <span>Require consent before first use</span>
-                </label>
-              </div>
+            <div class="widget-toggle" role="group" aria-label="Widget mode">
+              <button class="toggle-button active" data-widget="voice">
+                Voice widget
+              </button>
+              <button class="toggle-button" data-widget="chat">Chat widget</button>
             </div>
 
             <p class="playground-hint">
-              Look for the floating widget in the selected corner. Change the
-              settings above and tap the button to try it.
+              Look for the floating widget in the bottom-right corner. Use the
+              buttons above to flip between the voice and chat versions
             </p>
           </form>
 
@@ -163,23 +88,17 @@
             <h3>What you’re testing</h3>
             <p>
               This is the same LuxxAI widget we embed on client websites. Use it
-              here to decide how you want it to look and behave on your site.
+              here to understand how a customer would interact with your website.
             </p>
             <ul>
               <li>
-                <strong>Voice mode:</strong> visitors tap and speak to an AI
-                receptionist.
+                <strong>Customization:</strong> We customize everything for you to match your website: colors, size, theme, etc. 
               </li>
               <li>
-                <strong>Chat mode:</strong> visitors type to an AI assistant.
+                <strong>Brand:</strong> We provide our agents with a knowledge basis to represent who you are.
               </li>
               <li>
-                <strong>Position & size:</strong> standard widget locations and
-                layouts used across modern sites.
-              </li>
-              <li>
-                <strong>Colors & consent:</strong> match your brand and choose
-                whether to show a consent message.
+                <strong>Experience:</strong> We iterate upon the personality and interactivity over time, so that your user experience gets better over time.
               </li>
             </ul>
           </div>
