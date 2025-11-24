@@ -29,68 +29,47 @@ document.addEventListener("DOMContentLoaded", () => {
   updateBtn.textContent = "Update Preview";
   controlsForm.appendChild(updateBtn);
 
-  let widgetEl = null;
+const widget = document.getElementById("live-widget");
 
-  function removeWidget() {
-    if (widgetEl && widgetEl.parentNode) {
-      widgetEl.remove();
-      widgetEl = null;
-    }
-  }
+function updateWidget() {
+  const mode = document.getElementById("wp-mode").value;
+  const theme = document.getElementById("wp-theme").value;
+  const size = document.getElementById("wp-size").value;
+  const position = document.getElementById("wp-position").value;
+  const baseColor = document.getElementById("wp-base-color").value;
+  const accentColor = document.getElementById("wp-accent-color").value;
+  const showTranscript = document.getElementById("wp-show-transcript").checked;
+  const requireConsent = document.getElementById("wp-require-consent").checked;
 
-function createWidgetWithSettings() {
-  console.log(">>> Creating Vapi widget with settings");
-  removeWidget();
+  widget.setAttribute("mode", mode);
+  widget.setAttribute("theme", theme);
+  widget.setAttribute("size", size);
+  widget.setAttribute("position", position);
+  widget.setAttribute("base-bg-color", baseColor);
+  widget.setAttribute("accent-color", accentColor);
+  widget.setAttribute("cta-button-color", baseColor);
+  widget.setAttribute("cta-button-text-color", "#ffffff");
 
-  const mode = controlsForm.querySelector("#wp-mode").value;
-  const theme = controlsForm.querySelector("#wp-theme").value;
-  const size = controlsForm.querySelector("#wp-size").value;
-  const position = controlsForm.querySelector("#wp-position").value;
-  const baseColor = controlsForm.querySelector("#wp-base-color").value;
-  const accentColor = controlsForm.querySelector("#wp-accent-color").value;
-  const showTranscript = controlsForm.querySelector("#wp-show-transcript").checked;
-  const requireConsent = controlsForm.querySelector("#wp-require-consent").checked;
-
-  const w = document.createElement("vapi-widget");
-  w.setAttribute("public-key", "94c63e18‑d70d‑49c4‑86ee‑e35f081d28ac");
-  w.setAttribute("assistant-id", "d483aee6‑54c9‑4eaa‑b489‑b947401853cf");
-
-  w.setAttribute("mode", mode);
-  w.setAttribute("theme", theme);
-  w.setAttribute("size", size);
-  w.setAttribute("position", position);
-  w.setAttribute("border-radius", "large"); // use correct name per docs
-
-  // Styling attributes
-  w.setAttribute("base-bg-color", baseColor);
-  w.setAttribute("accent-color", accentColor);
-  w.setAttribute("cta-button-color", baseColor);
-  w.setAttribute("cta-button-text-color", "#ffffff");
-
-  // Text / labels
   if (mode === "voice") {
-    w.setAttribute("title", "Talk to LuxxAI");
-    w.setAttribute("start-button-text", "Start demo");
-    w.setAttribute("end-button-text", "End");
-    w.setAttribute("voice-empty-message", "Ask how LuxxAI voice agents can help your business.");
-    // transcript toggling
-    w.setAttribute("voice-show-transcript", showTranscript ? "true" : "false");
+    widget.setAttribute("title", "Talk to LuxxAI");
+    widget.setAttribute("voice-empty-message", "Ask how LuxxAI can help.");
+    widget.setAttribute("voice-show-transcript", showTranscript ? "true" : "false");
   } else {
-    w.setAttribute("title", "Chat with LuxxAI");
-    w.setAttribute("chat-empty-message", "Tell me about your business and I’ll show you how LuxxAI voice & chat agents can help.");
+    widget.setAttribute("title", "Chat with LuxxAI");
+    widget.setAttribute("chat-empty-message", "Let’s explore how LuxxAI can help.");
+    widget.removeAttribute("voice-empty-message");
   }
 
-  // Consent
-  w.setAttribute("consent-required", requireConsent ? "true" : "false");
+  widget.setAttribute("consent-required", requireConsent ? "true" : "false");
   if (requireConsent) {
-    w.setAttribute("consent-content", "By continuing you agree to let LuxxAI process your conversation to improve this demo and design agents for your business.");
+    widget.setAttribute("consent-content", "By continuing, you agree to our demo terms.");
+  } else {
+    widget.removeAttribute("consent-content");
   }
-
-  document.body.appendChild(w);
-  widgetEl = w;
-
-  console.log(">>> Vapi widget appended:", w);
 }
+
+document.getElementById("update-widget").addEventListener("click", updateWidget);
+
 
   // Wait until the custom element is defined
   if (window.customElements && window.customElements.whenDefined) {
@@ -102,5 +81,5 @@ function createWidgetWithSettings() {
     createWidgetWithSettings();
   }
 
-  updateBtn.addEventListener("click", createWidgetWithSettings);
+  updateBtn.addEventListener("click", updateWidget);
 });
