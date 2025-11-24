@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vapi Test</title>
+  </head>
+  <body>
+    <h1>Vapi Widget Test</h1>
+
+    <label>
+      Position:
+      <select id="pos">
+        <option value="bottom-left">bottom-left</option>
+        <option value="bottom-right" selected>bottom-right</option>
+        <option value="top-left">top-left</option>
+        <option value="top-right">top-right</option>
+      </select>
+    </label>
+
+    <label>
+      Mode:
+      <select id="mode">
+        <option value="voice" selected>voice</option>
+        <option value="chat">chat</option>
+      </select>
+    </label>
+
+    <!-- Vapi script -->
+    <script
+      src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
+      async
+      type="text/javascript"
+    ></script>
+
+    <script>
+      const posSel = document.getElementById("pos");
+      const modeSel = document.getElementById("mode");
+      let widgetEl = null;
+
+      function recreateWidget() {
+        // remove old
+        if (widgetEl && widgetEl.parentNode) {
+          widgetEl.parentNode.removeChild(widgetEl);
+        }
+
+        const w = document.createElement("vapi-widget");
+        w.setAttribute(
+          "public-key",
+          "94c63e18-d70d-49c4-86ee-e35f081d28ac"
+        );
+        w.setAttribute(
+          "assistant-id",
+          "d483aee6-54c9-4eaa-b489-b947401853cf"
+        );
+
+        w.setAttribute("position", posSel.value);
+        w.setAttribute("mode", modeSel.value);
+        w.setAttribute("size", "tiny");
+        w.setAttribute("theme", "dark");
+        w.setAttribute("radius", "large");
+
+        document.body.appendChild(w);
+        widgetEl = w;
+      }
+
+      posSel.addEventListener("change", recreateWidget);
+      modeSel.addEventListener("change", recreateWidget);
+
+      recreateWidget();
+    </script>
+  </body>
+</html>
