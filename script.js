@@ -50,98 +50,92 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Widget playground logic ---
-  const controlsForm = document.getElementById("widget-controls");
-  if (!controlsForm) return;
+// --- Widget playground logic ---
+const controlsForm = document.getElementById("widget-controls");
+if (!controlsForm) return;
 
-  let widgetEl = null;
+// We'll always recreate this on change
+let widgetEl = null;
 
-  function ensureWidget() {
-    if (!widgetEl) {
-      widgetEl = document.createElement("vapi-widget");
-      widgetEl.dataset.playground = "true";
-
-      // Required props
-      widgetEl.setAttribute(
-        "public-key",
-        "94c63e18-d70d-49c4-86ee-e35f081d28ac"
-      );
-      widgetEl.setAttribute(
-        "assistant-id",
-        "d483aee6-54c9-4eaa-b489-b947401853cf"
-      );
-
-      document.body.appendChild(widgetEl);
-    }
-    return widgetEl;
+function createWidgetWithSettings() {
+  // If a widget already exists, remove it
+  if (widgetEl && widgetEl.parentNode) {
+    widgetEl.parentNode.removeChild(widgetEl);
   }
 
-  function updateWidgetFromControls() {
-    const mode = controlsForm.querySelector("#wp-mode").value;
-    const theme = controlsForm.querySelector("#wp-theme").value;
-    const size = controlsForm.querySelector("#wp-size").value;
-    const position = controlsForm.querySelector("#wp-position").value;
-    const baseColor = controlsForm.querySelector("#wp-base-color").value;
-    const accentColor = controlsForm.querySelector("#wp-accent-color").value;
-    const showTranscript = controlsForm.querySelector("#wp-show-transcript")
-      .checked;
-    const requireConsent = controlsForm.querySelector("#wp-require-consent")
-      .checked;
+  // Read current controls
+  const mode = controlsForm.querySelector("#wp-mode").value;
+  const theme = controlsForm.querySelector("#wp-theme").value;
+  const size = controlsForm.querySelector("#wp-size").value;
+  const position = controlsForm.querySelector("#wp-position").value;
+  const baseColor = controlsForm.querySelector("#wp-base-color").value;
+  const accentColor = controlsForm.querySelector("#wp-accent-color").value;
+  const showTranscript = controlsForm.querySelector("#wp-show-transcript")
+    .checked;
+  const requireConsent = controlsForm.querySelector("#wp-require-consent")
+    .checked;
 
-    const w = ensureWidget();
+  // Create a brand new widget element
+  const w = document.createElement("vapi-widget");
 
-    // Appearance options
-    w.setAttribute("mode", mode); // voice | chat
-    w.setAttribute("theme", theme); // light | dark
-    w.setAttribute("size", size); // tiny | compact | full
-    w.setAttribute("position", position); // bottom-right | ...
-    w.setAttribute("radius", "large");
+  // Required props
+  w.setAttribute("public-key", "94c63e18-d70d-49c4-86ee-e35f081d28ac");
+  w.setAttribute("assistant-id", "d483aee6-54c9-4eaa-b489-b947401853cf");
 
-    // Styling options
-    w.setAttribute("base-color", baseColor);
-    w.setAttribute("accent-color", accentColor);
-    w.setAttribute("button-base-color", baseColor);
-    w.setAttribute("button-accent-color", "#ffffff");
+  // Appearance options
+  w.setAttribute("mode", mode);          // voice | chat
+  w.setAttribute("theme", theme);        // light | dark
+  w.setAttribute("size", size);          // tiny | compact | full
+  w.setAttribute("position", position);  // bottom-left, etc.
+  w.setAttribute("radius", "large");
 
-    // Text customization
-    if (mode === "voice") {
-      w.setAttribute("main-label", "Talk to LuxxAI");
-      w.setAttribute("start-button-text", "Start demo");
-      w.setAttribute("end-button-text", "End");
-      w.setAttribute(
-        "empty-voice-message",
-        "Ask how LuxxAI voice agents can help your business."
-      );
-      // If you don't want chat text in voice mode, remove chat message attr
-      w.removeAttribute("empty-chat-message");
-    } else {
-      w.setAttribute("main-label", "Chat with LuxxAI");
-      w.setAttribute(
-        "empty-chat-message",
-        "Tell me about your business and I'll show you how LuxxAI voice & chat agents can help."
-      );
-      w.removeAttribute("empty-voice-message");
-    }
+  // Styling options
+  w.setAttribute("base-color", baseColor);
+  w.setAttribute("accent-color", accentColor);
+  w.setAttribute("button-base-color", baseColor);
+  w.setAttribute("button-accent-color", "#ffffff");
 
-    // Advanced options
-    w.setAttribute("show-transcript", showTranscript ? "true" : "false");
-
-    if (requireConsent) {
-      w.setAttribute("require-consent", "true");
-      w.setAttribute(
-        "terms-content",
-        "By continuing, you agree to let LuxxAI process your conversation to improve this demo and design agents for your business."
-      );
-      // local-storage-key left as default unless you want to customize it
-    } else {
-      w.setAttribute("require-consent", "false");
-      w.removeAttribute("terms-content");
-    }
+  // Text customization
+  if (mode === "voice") {
+    w.setAttribute("main-label", "Talk to LuxxAI");
+    w.setAttribute("start-button-text", "Start demo");
+    w.setAttribute("end-button-text", "End");
+    w.setAttribute(
+      "empty-voice-message",
+      "Ask how LuxxAI voice agents can help your business."
+    );
+    w.removeAttribute("empty-chat-message");
+  } else {
+    w.setAttribute("main-label", "Chat with LuxxAI");
+    w.setAttribute(
+      "empty-chat-message",
+      "Tell me about your business and I'll show you how LuxxAI voice & chat agents can help."
+    );
+    w.removeAttribute("empty-voice-message");
   }
 
-  // Update whenever a control changes
-  controlsForm.addEventListener("change", updateWidgetFromControls);
+  // Advanced options
+  w.setAttribute("show-transcript", showTranscript ? "true" : "false");
 
-  // Initial widget setup (defaults from the form)
-  updateWidgetFromControls();
-});
+  if (requireConsent) {
+    w.setAttribute("require-consent", "true");
+    w.setAttribute(
+      "terms-content",
+      "By continuing, you agree to let LuxxAI process your conversation to improve this demo and design agents for your business."
+    );
+  } else {
+    w.setAttribute("require-consent", "false");
+    w.removeAttribute("terms-content");
+  }
+
+  // Add it to the page (Vapi script turns this into a real widget)
+  document.body.appendChild(w);
+  widgetEl = w;
+}
+
+// Run once on load
+createWidgetWithSettings();
+
+// Recreate whenever a control changes
+controlsForm.addEventListener("change", createWidgetWithSettings);
+
