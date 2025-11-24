@@ -38,57 +38,59 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function createWidgetWithSettings() {
-    removeWidget();
+function createWidgetWithSettings() {
+  console.log(">>> Creating Vapi widget with settings");
+  removeWidget();
 
-    const mode = controlsForm.querySelector("#wp-mode").value;
-    const theme = controlsForm.querySelector("#wp-theme").value;
-    const size = controlsForm.querySelector("#wp-size").value;
-    const position = controlsForm.querySelector("#wp-position").value;
-    const baseColor = controlsForm.querySelector("#wp-base-color").value;
-    const accentColor = controlsForm.querySelector("#wp-accent-color").value;
-    const showTranscript = controlsForm.querySelector("#wp-show-transcript").checked;
-    const requireConsent = controlsForm.querySelector("#wp-require-consent").checked;
+  const mode = controlsForm.querySelector("#wp-mode").value;
+  const theme = controlsForm.querySelector("#wp-theme").value;
+  const size = controlsForm.querySelector("#wp-size").value;
+  const position = controlsForm.querySelector("#wp-position").value;
+  const baseColor = controlsForm.querySelector("#wp-base-color").value;
+  const accentColor = controlsForm.querySelector("#wp-accent-color").value;
+  const showTranscript = controlsForm.querySelector("#wp-show-transcript").checked;
+  const requireConsent = controlsForm.querySelector("#wp-require-consent").checked;
 
-    const w = document.createElement("vapi-widget");
-    w.setAttribute("public-key", "94c63e18‑d70d‑49c4‑86ee‑e35f081d28ac");
-    w.setAttribute("assistant-id", "d483aee6‑54c9‑4eaa‑b489‑b947401853cf");
+  const w = document.createElement("vapi-widget");
+  w.setAttribute("public-key", "94c63e18‑d70d‑49c4‑86ee‑e35f081d28ac");
+  w.setAttribute("assistant-id", "d483aee6‑54c9‑4eaa‑b489‑b947401853cf");
 
-    w.setAttribute("mode", mode);
-    w.setAttribute("theme", theme);
-    w.setAttribute("size", size);
-    w.setAttribute("position", position);
-    w.setAttribute("radius", "large");
+  w.setAttribute("mode", mode);
+  w.setAttribute("theme", theme);
+  w.setAttribute("size", size);
+  w.setAttribute("position", position);
+  w.setAttribute("border-radius", "large"); // use correct name per docs
 
-    // Use correct color attribute names if supported
-    w.setAttribute("base-color", baseColor);
-    w.setAttribute("accent-color", accentColor);
-    // Optionally button colors
-    w.setAttribute("button-base-color", baseColor);
-    w.setAttribute("button-accent-color", "#ffffff");
+  // Styling attributes
+  w.setAttribute("base-bg-color", baseColor);
+  w.setAttribute("accent-color", accentColor);
+  w.setAttribute("cta-button-color", baseColor);
+  w.setAttribute("cta-button-text-color", "#ffffff");
 
-    if (mode === "voice") {
-      w.setAttribute("main-label", "Talk to LuxxAI");
-      w.setAttribute("start-button-text", "Start demo");
-      w.setAttribute("end-button-text", "End");
-      w.setAttribute("empty-voice-message", "Ask how LuxxAI voice agents can help your business.");
-    } else {
-      w.setAttribute("title", "Chat with LuxxAI");
-      w.setAttribute("empty-chat-message", "Tell me about your business and I’ll show you how LuxxAI voice & chat agents can help.");
-    }
-
-    w.setAttribute("show-transcript", showTranscript ? "true" : "false");
-
-    if (requireConsent) {
-      w.setAttribute("require-consent", "true");
-      w.setAttribute("terms-content", "By continuing you agree to let LuxxAI process your conversation to improve this demo and design agents for your business.");
-    } else {
-      w.setAttribute("require-consent", "false");
-    }
-
-    document.body.appendChild(w);
-    widgetEl = w;
+  // Text / labels
+  if (mode === "voice") {
+    w.setAttribute("title", "Talk to LuxxAI");
+    w.setAttribute("start-button-text", "Start demo");
+    w.setAttribute("end-button-text", "End");
+    w.setAttribute("voice-empty-message", "Ask how LuxxAI voice agents can help your business.");
+    // transcript toggling
+    w.setAttribute("voice-show-transcript", showTranscript ? "true" : "false");
+  } else {
+    w.setAttribute("title", "Chat with LuxxAI");
+    w.setAttribute("chat-empty-message", "Tell me about your business and I’ll show you how LuxxAI voice & chat agents can help.");
   }
+
+  // Consent
+  w.setAttribute("consent-required", requireConsent ? "true" : "false");
+  if (requireConsent) {
+    w.setAttribute("consent-content", "By continuing you agree to let LuxxAI process your conversation to improve this demo and design agents for your business.");
+  }
+
+  document.body.appendChild(w);
+  widgetEl = w;
+
+  console.log(">>> Vapi widget appended:", w);
+}
 
   // Wait until the custom element is defined
   if (window.customElements && window.customElements.whenDefined) {
