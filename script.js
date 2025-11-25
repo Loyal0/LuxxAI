@@ -25,27 +25,3 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   fadeEls.forEach((el) => observer.observe(el));
-
-  // --- Phone demo form (stub) ---
-  const callForm = document.getElementById("call-demo-form");
-  const phoneInput = document.getElementById("phone-input");
-  const callStatus = document.getElementById("call-status");
-
-  if (callForm && phoneInput && callStatus) {
-    callForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const phone = phoneInput.value.trim();
-      if (!phone) return;
-
-      callStatus.style.color = "#a5b4fc";
-      callStatus.textContent =
-        "Simulating call… in production this will dial your number with a LuxxAI phone agent.";
-
-      setTimeout(() => {
-        callStatus.style.color = "#4ade80";
-        callStatus.textContent =
-          "Call simulation complete. Hook this form up to your LuxxAI backend when you're ready.";
-      }, 2500);
-    });
-  }
-});
