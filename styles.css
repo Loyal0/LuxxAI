@@ -344,70 +344,46 @@ main {
   color: #a5b4fc;
 }
 
-/* ------------- Phone call form ------------- */
-.call-form {
+/* ------------- Phone call demo ------------- */
+.call-instructions {
   margin-top: 0.6rem;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+  background: rgba(10, 12, 28, 0.65);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
 }
 
-.call-form label {
-  display: block;
-  font-size: 0.85rem;
-  margin-bottom: 0.3rem;
-  color: var(--text-muted);
-}
-
-.call-input-row {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.45rem;
-}
-
-.call-input-row input[type="tel"] {
-  flex: 1;
-  padding: 0.55rem 0.7rem;
-  border-radius: 0.75rem;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  background: rgba(15, 23, 42, 0.9);
-  color: var(--text-main);
-  font-size: 0.9rem;
-}
-
-.call-input-row input::placeholder {
-  color: rgba(148, 163, 184, 0.8);
-}
-
-.call-input-row button {
-  padding: 0.55rem 0.95rem;
-  border-radius: 0.75rem;
-  border: none;
-  font-size: 0.9rem;
+.call-prompt {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  cursor: pointer;
-  background: linear-gradient(120deg, var(--accent-1), var(--accent-2));
-  color: white;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.55);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.call-input-row button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.75);
+.call-number {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #7dd3fc;
+  text-decoration: none;
 }
 
-.call-input-row button:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.65);
+.call-number::before {
+  content: "📞";
+  font-size: 1.1rem;
+}
+
+.call-number:hover {
+  color: #a5b4fc;
 }
 
 .call-hint {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-}
-
-.call-status {
-  margin: 0.3rem 0 0;
-  font-size: 0.82rem;
 }
 
 /* ------------- Agent example icons ------------- */
