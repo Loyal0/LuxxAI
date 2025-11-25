@@ -25,3 +25,4 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   fadeEls.forEach((el) => observer.observe(el));
+});
