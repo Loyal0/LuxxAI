@@ -48,39 +48,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 2500);
     });
   }
-
-  // --- Voice / Chat widget toggle logic ---
-  const voiceWidget = document.getElementById("voice-widget");
-  const chatWidget = document.getElementById("chat-widget");
-  const toggleButtons = document.querySelectorAll(".toggle-button");
-
-  function setActiveWidget(widgetType) {
-    if (widgetType === "voice") {
-      if (voiceWidget) voiceWidget.classList.remove("hidden-element");
-      if (chatWidget) chatWidget.classList.add("hidden-element");
-    } else if (widgetType === "chat") {
-      if (chatWidget) chatWidget.classList.remove("hidden-element");
-      if (voiceWidget) voiceWidget.classList.add("hidden-element");
-    }
-
-    // Update button active states
-    toggleButtons.forEach((btn) => {
-      if (btn.dataset.widget === widgetType) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
-      }
-    });
-  }
-
-  // Wire up the toggle buttons
-  toggleButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const target = btn.dataset.widget; // "voice" or "chat"
-      setActiveWidget(target);
-    });
-  });
-
-  // Initial state: voice visible, chat hidden
-  setActiveWidget("voice");
 });
